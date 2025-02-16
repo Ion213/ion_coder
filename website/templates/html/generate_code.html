@@ -1,0 +1,89 @@
+{% extends '/html/base_top_nav.jinja2' %}
+
+{% block title %}
+    HTML GENERATOR
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="text-center">PROMPT to HTML-CODE to UI</h2>
+        
+        <!-- Input Section -->
+        <div class="input-group mb-4">
+            <input type="text" id="userInput" class="form-control" placeholder="Enter your prompt...">
+            <button class="btn btn-primary" id="sendButton">Send ✈️</button>
+        </div>
+
+        <!-- Code and Preview Section -->
+        <div class="row">
+            <!-- Code Box (Left Column) -->
+            <div class="col-lg-6 col-md-12 mb-3 p-3 p-md-4" >
+                <div style="position: relative;">
+
+                    <button id="showCode" class="btn"
+                            style="position: sticky; top: 1px; right: 1px; 
+                        padding: 5px; font-size: 18px; 
+                        border-radius: 50%; width: 30px; height: 30px; 
+                        display: flex; justify-content: center; align-items: center; float: right;">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+
+                    <button id="copyButton" 
+                    class="btn" 
+                    style="position: sticky; top: 1px; right: 1px; 
+                        padding: 5px; font-size: 18px; 
+                        border-radius: 50%; width: 30px; height: 30px; 
+                        display: flex; justify-content: center; align-items: center; float: right;">
+                        <i class="fa-solid fa-copy"></i>
+                    </button>
+
+                    <button id="restore" class="btn"
+                            style="position: sticky; top: 1px; right: 1px; 
+                        padding: 5px; font-size: 18px; 
+                        border-radius: 50%; width: 30px; height: 30px; 
+                        display: flex; justify-content: center; align-items: center; float: right;">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+
+                </div>
+                <h4 class="text-center">Generated HTML-Code:</h4>
+                <div class="code-box position-relative">
+                    <pre><code id="codeBox" class="language-html" style="background: #22222200;"></code></pre>
+                </div>
+            </div>
+
+            <!-- Preview (Right Column) -->
+            <div class="col-lg-6 col-md-12 mb-3 p-3 p-md-4">
+
+                <div style="position: relative;">
+                    <!-- Fullscreen Button -->
+                    <button id="fullscreenButton" class="btn"
+                            style="position: sticky; top: 1px; right: 1px; 
+                        padding: 5px; font-size: 18px; 
+                        border-radius: 50%; width: 30px; height: 30px; 
+                        display: flex; justify-content: center; align-items: center; float: right;">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+
+                    <button id="refresh" class="btn"
+                            style="position: sticky; top: 1px; right: 1px; 
+                        padding: 5px; font-size: 18px; 
+                        border-radius: 50%; width: 30px; height: 30px; 
+                        display: flex; justify-content: center; align-items: center; float: right;">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+
+                </div>
+                            
+                <h4 class="text-center">UI Preview:</h4>
+                <iframe id="preview" class="w-100" placeholder="Live Preview:"></iframe>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom CSS and JS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/generate_code.css') }}">
+    <script src="{{ url_for('static', filename='js/generate_code.js') }}"></script>
+{% endblock %}
+
